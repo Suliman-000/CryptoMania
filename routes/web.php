@@ -14,6 +14,10 @@ Route::get('/dashboard', function () {
 
 Route::get('/coins', [CoinController::class, 'index'])->name('coins.index');
 
+Route::get('/wallet', function () {
+    return view('wallet');
+})->middleware('auth');
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
