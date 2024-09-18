@@ -14,9 +14,11 @@ Route::get('/dashboard', function () {
 
 Route::get('/coins', [CoinController::class, 'index'])->name('coins.index');
 
+Route::get('/coins/{id}', [CoinController::class, 'show'])->name('coins.show');
+
 Route::get('/wallet', function () {
     return view('wallet');
-})->middleware('auth');
+})->name('wallet')->middleware('auth');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
