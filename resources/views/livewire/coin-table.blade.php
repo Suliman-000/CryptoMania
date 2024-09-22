@@ -1,5 +1,5 @@
 <div class="container mx-auto p-4">
-    <h1 class="text-2xl text-gray-200 font-bold mt-2 mb-6">List of Cryptocurrencies</h1>
+    <h1 class="text-2xl text-gray-200 font-bold my-12 mb-6">List of Cryptocurrencies</h1>
 
     <!-- Success Message -->
     @if (session()->has('message'))

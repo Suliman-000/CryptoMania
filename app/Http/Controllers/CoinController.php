@@ -8,8 +8,6 @@ class CoinController extends Controller
 {
     public function index(Request $request)
     {
-        return view('coins.index');
+        return view('coins.coin-index');
     }
-
-    
 }

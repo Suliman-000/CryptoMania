@@ -5,20 +5,18 @@ use App\Http\Controllers\CoinController;
 use App\Http\Controllers\ProfileController;
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('index');
+})->name('index');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/coins', [CoinController::class, 'index'])->name('coins.index');
+Route::get('/coins', [CoinController::class, 'index'])->name('coins.index')->middleware('auth');
+Route::get('/coins/{id}', [CoinController::class, 'show'])->name('coins.show')->middleware('auth');
 
-Route::get('/coins/{id}', [CoinController::class, 'show'])->name('coins.show');
 
 Route::get('/wallet', function () {
     return view('wallet');
 })->name('wallet')->middleware('auth');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
