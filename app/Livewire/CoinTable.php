@@ -4,40 +4,38 @@ namespace App\Livewire;
 
 use App\Models\Wallet;
 use Livewire\Component;
+use Livewire\WithPagination;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
-use Livewire\WithPagination;
 
 class CoinTable extends Component
 {
     use WithPagination;
 
-    public $coins;
     public $selectedCoin;
     public $amount;
     public $isModalOpen = false;
+    public $records;
 
-    // Fetch coins when component is initialized
+    // Fetch coins when the component is initialized
     public function mount()
     {
-        $this->coins = $this->fetchCoinsFromApi();
+        $this->fetchCoinsFromApi();
     }
 
-    // Function to fetch the coin data from the API
+    // Fetch coin data from the API with pagination
     public function fetchCoinsFromApi()
     {
-        $response = Http::get('https://api.coincap.io/v2/assets');
-        if ($response->successful()) {
-            return $response->json()['data'];
-        }
-        return [];
+        $response = Http::withoutVerifying()->get('https://api.coincap.io/v2/assets')->json();
+
+        $this->records = $response['data'];
     }
 
     // Open the modal and set the selected coin
     public function openModal($coinId)
     {
-        // Find the selected coin from the $coins property by ID
-        $this->selectedCoin = collect($this->coins)->firstWhere('id', $coinId);
+        // Find the selected coin from the $records property by ID
+        $this->selectedCoin = collect($this->records)->firstWhere('id', $coinId);
 
         if ($this->selectedCoin) {
             $this->isModalOpen = true;
@@ -75,6 +73,8 @@ class CoinTable extends Component
 
     public function render()
     {
-        return view('livewire.coin-table');
+        return view('livewire.coin-table', [
+            'coins' => $this->records, // Pass paginated records to the view
+        ]);
     }
 }
