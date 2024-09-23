@@ -15,6 +15,7 @@ class CoinTable extends Component
     public $selectedCoin;
     public $amount;
     public $isModalOpen = false;
+    public $search = '';
     public $records;
 
     // Fetch coins when the component is initialized
@@ -26,9 +27,18 @@ class CoinTable extends Component
     // Fetch coin data from the API with pagination
     public function fetchCoinsFromApi()
     {
+        // Fetch all coins from the API
         $response = Http::withoutVerifying()->get('https://api.coincap.io/v2/assets')->json();
+        $coins = $response['data'];
 
-        $this->records = $response['data'];
+        // Filter coins based on the search input
+        if ($this->search) {
+            $coins = collect($coins)->filter(function ($coin) {
+                return stripos($coin['name'], $this->search) !== false || stripos($coin['symbol'], $this->search) !== false;
+            })->values()->all();
+        }
+
+        $this->records = $coins;
     }
 
     // Open the modal and set the selected coin
@@ -84,6 +94,9 @@ class CoinTable extends Component
 
     public function render()
     {
+        // Fetch the coins again if search input changes
+        $this->fetchCoinsFromApi();
+
         return view('livewire.coin-table', [
             'coins' => $this->records, // Pass paginated records to the view
         ]);
