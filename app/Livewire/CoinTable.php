@@ -53,7 +53,7 @@ class CoinTable extends Component
     public function addToWallet()
     {
         $this->validate([
-            'amount' => 'required|numeric|min:0.00000001',
+            'amount' => 'required|numeric|min:1',
         ]);
 
         // Save the selected coin to the wallet

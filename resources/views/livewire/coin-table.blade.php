@@ -68,7 +68,7 @@
                 <!-- Amount input -->
                 <div class="mb-4">
                     <label for="amount" class="block text-sm font-medium text-gray-700">Amount</label>
-                    <input type="number" wire:model="amount" step="0.00000001" min="0" class="mt-1 block w-full" />
+                    <input type="number" wire:model="amount" min="1" class="mt-1 block w-full" />
                     @error('amount') <span class="text-red-500">{{ $message }}</span> @enderror
                 </div>
 

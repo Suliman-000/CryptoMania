@@ -54,7 +54,7 @@
     <!-- Modal for selling a coin -->
     @if ($isModalOpen)
     <div class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-        <div class="bg-white p-6 rounded-md shadow-lg">
+        <div class="bg-white w-1/3 p-6 rounded-md shadow-lg">
             <h2 class="text-xl font-bold mb-4">Sell Coin: {{ $selectedCoin->coin_name ?? '' }}</h2>
 
             <!-- Form for selling coin -->
@@ -62,19 +62,18 @@
                 <div class="mb-4">
                     <label for="sellAmount" class="block text-gray-700">Amount to Sell</label>
                     <input type="number"
-                        step="0.00000001"
                         wire:model="sellAmount"
                         id="sellAmount"
                         class="w-full p-2 border border-gray-300 rounded-md"
-                        max="{{ $selectedCoin->amount ?? 0 }}"  <!-- Restrict max value -->
-                        min="0.00000001"  <!-- Ensure minimum valid input -->
+                        max="{{ $selectedCoin->amount ?? 0 }}"
+                        min="1"
                         value="{{ $selectedCoin->amount ?? 0 }}"> <!-- Prefill input -->
                     @error('sellAmount') <span class="text-red-500">{{ $message }}</span> @enderror
                 </div>
 
                 <!-- Sell Button -->
                 <div class="flex justify-end">
-                    <button type="submit" class="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700">Sell</button>
+                    <button type="submit" class="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-700 transition-all ease-in-out duration-200">Sell</button>
                     <button type="button" wire:click="closeModal" class="ml-2 px-4 py-2 bg-gray-600 text-white rounded-md hover:bg-gray-700">Cancel</button>
                 </div>
             </form>
