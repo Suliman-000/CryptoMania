@@ -56,14 +56,25 @@ class CoinTable extends Component
             'amount' => 'required|numeric|min:1',
         ]);
 
-        // Save the selected coin to the wallet
-        Wallet::create([
-            'user_id' => Auth::id(),
-            'coin_name' => $this->selectedCoin['name'],
-            'coin_id' => $this->selectedCoin['id'],
-            'amount' => $this->amount,
-            'current_price' => $this->selectedCoin['priceUsd'],
-        ]);
+        // Check if the coin already exists in the user's wallet
+        $wallet = Wallet::where('user_id', Auth::id())
+                    ->where('coin_id', $this->selectedCoin['id'])
+                    ->first();
+
+        if ($wallet) {
+            // Coin exists in the wallet, update the amount
+            $wallet->amount += $this->amount;
+            $wallet->save();
+        } else {
+            // Coin does not exist, create a new entry
+            Wallet::create([
+                'user_id' => Auth::id(),
+                'coin_name' => $this->selectedCoin['name'],
+                'coin_id' => $this->selectedCoin['id'],
+                'amount' => $this->amount,
+                'current_price' => $this->selectedCoin['priceUsd'],
+            ]);
+        }
 
         // Close modal and reset form
         $this->closeModal();

@@ -45,10 +45,10 @@
                         </td>
                         <td class="px-6 py-4">
                             <div class="flex justify-center space-x-2">
-                                <a href="{{ route('coins.show', $coin['id']) }}" class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-700">
+                                <a href="{{ route('coins.show', $coin['id']) }}" class="px-4 py-2 bg-indigo-500 text-white rounded-lg hover:bg-indigo-700 transition-all ease-in-out duration-200">
                                     View Details
                                 </a>
-                                <button wire:click="openModal('{{ $coin['id'] }}')" class="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-700">
+                                <button wire:click="openModal('{{ $coin['id'] }}')" class="px-4 py-2 bg-green-700 text-white rounded-lg hover:bg-green-500 transition-all ease-in-out duration-200">
                                     Add to Wallet
                                 </button>
                             </div>
