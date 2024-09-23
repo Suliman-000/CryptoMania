@@ -61,7 +61,7 @@
 
     <!-- Modal -->
     @if ($isModalOpen)
-        <div class="fixed inset-0 bg-gray-600 bg-opacity-75 flex justify-center items-center">
+        <div class="fixed inset-0 bg-gray-600 bg-opacity-75 flex justify-center items-center z-[999]">
             <div class="bg-white rounded-lg p-6 w-96">
                 <h2 class="text-xl font-bold mb-4">Add {{ $selectedCoin['name'] }} to Wallet</h2>
 
