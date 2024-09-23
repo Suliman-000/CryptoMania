@@ -10,7 +10,7 @@ Route::get('/', function () {
 
 
 Route::get('/coins', [CoinController::class, 'index'])->name('coins.index')->middleware('auth');
-Route::get('/coins/{id}', [CoinController::class, 'show'])->name('coins.show')->middleware('auth');
+Route::get('/coin/{id}', [CoinController::class, 'show'])->name('coins.show')->middleware('auth');
 
 
 Route::get('/wallet', function () {
