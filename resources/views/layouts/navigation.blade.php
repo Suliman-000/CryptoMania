@@ -19,8 +19,11 @@
                         <x-nav-link :href="route('coins.index')" :active="request()->routeIs('coins.index')">
                             {{ __('Coins') }}
                         </x-nav-link>
-                        <x-nav-link :href="route('wallet')" :active="request()->routeIs('wallet')">
-                            {{ __('Wallet') }}
+                        <x-nav-link :href="route('exchange')" :active="request()->routeIs('exchange')">
+                            {{ __('Exchange') }}
+                        </x-nav-link>
+                        <x-nav-link :href="route('cryptonews')" :active="request()->routeIs('cryptonews')">
+                            {{ __('Cryptonews') }}
                         </x-nav-link>
                     @endauth
                 </div>
@@ -47,6 +50,9 @@
                                 <x-slot name="content">
                                     <x-dropdown-link :href="route('profile.edit')">
                                         {{ __('Profile') }}
+                                    </x-dropdown-link>
+                                    <x-dropdown-link :href="route('wallet')">
+                                        {{ __('Wallet') }}
                                     </x-dropdown-link>
 
                                     <!-- Authentication -->
@@ -104,8 +110,11 @@
                 <x-responsive-nav-link :href="route('coins.index')" :active="request()->routeIs('coins.index')">
                     {{ __('Coins') }}
                 </x-responsive-nav-link>
-                <x-responsive-nav-link :href="route('wallet')" :active="request()->routeIs('wallet')">
-                    {{ __('Wallet') }}
+                <x-responsive-nav-link :href="route('exchange')" :active="request()->routeIs('exchange')">
+                    {{ __('Exchange') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('cryptonews')" :active="request()->routeIs('cryptonews')">
+                    {{ __('Cryptonews') }}
                 </x-responsive-nav-link>
             @endauth
         </div>
@@ -122,6 +131,9 @@
                     <div class="mt-3 space-y-1">
                         <x-responsive-nav-link :href="route('profile.edit')">
                             {{ __('Profile') }}
+                        </x-responsive-nav-link>
+                        <x-responsive-nav-link :href="route('wallet')">
+                            {{ __('Wallet') }}
                         </x-responsive-nav-link>
 
                         <!-- Authentication -->

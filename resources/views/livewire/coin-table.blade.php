@@ -30,7 +30,8 @@
                     <th scope="col" class="px-6 py-3">Coin</th>
                     <th scope="col" class="px-6 py-3">Short Name</th>
                     <th scope="col" class="px-6 py-3">Full Name</th>
-                    <th scope="col" class="px-6 py-3">Price</th>
+                    <th scope="col" class="px-6 py-3">Price (USD)</th>
+                    <th scope="col" class="px-6 py-3">Price (EUR)</th>
                     <th scope="col" class="px-6 py-3">Market Cap</th>
                     <th scope="col" class="px-6 py-3">24h Volume</th>
                     <th scope="col" class="px-6 py-3 text-center">Actions</th>
@@ -50,6 +51,9 @@
                         </td>
                         <td class="px-6 py-4">
                             ${{ number_format($coin['priceUsd'], 2) }}
+                        </td>
+                        <td class="px-6 py-4">
+                            €{{ number_format($coin['priceEur'], 2) }}
                         </td>
                         <td class="px-6 py-4">
                             ${{ number_format($coin['marketCapUsd'], 2) }}

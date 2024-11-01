@@ -17,11 +17,20 @@ class CoinTable extends Component
     public $isModalOpen = false;
     public $search = '';
     public $records;
+    public $eurConversionRate;
 
     // Fetch coins when the component is initialized
     public function mount()
     {
+        $this->fetchEuroRate();
         $this->fetchCoinsFromApi();
+    }
+
+    // Fetch Euro rate from CoinCap API
+    public function fetchEuroRate()
+    {
+        $response = Http::withoutVerifying()->get('https://api.coincap.io/v2/rates/euro')->json();
+        $this->eurConversionRate = 1 / $response['data']['rateUsd']; // Calculate EUR price from USD rate
     }
 
     // Fetch coin data from the API with pagination
@@ -36,6 +45,11 @@ class CoinTable extends Component
             $coins = collect($coins)->filter(function ($coin) {
                 return stripos($coin['name'], $this->search) !== false || stripos($coin['symbol'], $this->search) !== false;
             })->values()->all();
+        }
+
+        // Add Euro price to each coin object
+        foreach ($coins as &$coin) {
+            $coin['priceEur'] = $coin['priceUsd'] * $this->eurConversionRate; // Calculate Euro price
         }
 
         $this->records = $coins;
