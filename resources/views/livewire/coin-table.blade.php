@@ -74,7 +74,7 @@
                     </tr>
                 @empty
                     <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-                        <td colspan="7" class="px-6 py-12 text-center text-gray-500 dark:text-gray-400">
+                        <td colspan="8" class="px-6 py-12 text-center text-gray-500 dark:text-gray-400">
                             <div class="flex flex-col justify-center items-center h-full text-xl">
                                 No results found...
                                 <div>

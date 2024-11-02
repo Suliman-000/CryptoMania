@@ -6,14 +6,14 @@
             <h2 class="sm:text-4xl text-2xl font-bold mb-6">Stay Ahead with the Latest in Crypto News</h2>
             <p class="sm:text-lg text-base text-center text-gray-200">Catch up on market trends, insights, and breaking news in the world of cryptocurrency, all in one place.</p>
 
-            <a href="#table"
+            <a href="#news"
                 class="mt-12 bg-transparent text-white text-base py-3 px-6 border border-white rounded-lg hover:bg-white hover:text-black transition duration-300">
-                Manage Your Wallet
+                Explore Crypto news
             </a>
         </div>
     </div>
 
-    <section id="table">
+    <section id="news">
         @livewire('crypto-news')
     </section>
 

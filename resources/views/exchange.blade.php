@@ -6,14 +6,14 @@
             <h2 class="sm:text-4xl text-2xl font-bold mb-6">Explore Global Crypto Exchanges</h2>
             <p class="sm:text-lg text-base text-center text-gray-200">Find trusted exchanges, compare volumes, and access official sites to make informed trading decisions.</p>
 
-            <a href="#table"
+            <a href="#list"
                 class="mt-12 bg-transparent text-white text-base py-3 px-6 border border-white rounded-lg hover:bg-white hover:text-black transition duration-300">
-                Manage Your Wallet
+                Explore exchange list
             </a>
         </div>
     </div>
 
-    <section id="table">
+    <section id="list">
         @livewire('exchange-list')
     </section>
 

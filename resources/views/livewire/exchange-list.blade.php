@@ -1,5 +1,5 @@
 <div class="container mx-auto p-6">
-    <h1 class="text-3xl text-gray-200 font-bold my-12 text-center">Exchange List</h1>
+    <h1 class="text-2xl text-gray-200 font-bold my-12">Exchange List</h1>
 
     <ul class="space-y-6">
         @foreach($exchanges as $exchange)
